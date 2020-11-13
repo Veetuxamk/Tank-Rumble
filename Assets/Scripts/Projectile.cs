@@ -1,63 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Projectile : MonoBehaviour
 {
-
-    // Use this for initialization
-
-    public float speed;
-
-    bool bulletDirection;
+    public static Projectile SharedInstance;
+    public List<GameObject> pooledObjects;
+    public GameObject ObjectToPool;
+    public int ammountToPool;
 
 
-    void Start()
+
+    void Awake()
     {
-        
+    SharedInstance = this;
     }
 
-
-    void OnEnable()
+    private void Start()
     {
-        bulletDirection = SimpleTankMovement.facingRight;
+    pooledObjects = new List<GameObject>();
+   
+      
+         for (int i = 0; i < ammountToPool; i++)
+          {
+            GameObject obj = (GameObject)Instantiate(ObjectToPool);
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+          }
     }
-
-
-    // Update is called once per frame
-    void Update()
+    public GameObject GetPooledObject()
     {
-
-
-        if (bulletDirection == false)
+        for(int i = 0;i<pooledObjects.Count; i++)
         {
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
-
-
+            if(!pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
         }
-        else
-        {
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-
-        }
-
-        //transform.Translate(-speed * Time.deltaTime, 0, 0);
-
-
-
-
-
+        return null;
     }
-    void Fire()
-    {
-
-        GameObject obj = ObjectPooler.current.GetPooledObject();
-        if (obj == null) return;
-
-        // Resets the Position and Rotation of the projectiles when they become active again
-        obj.transform.position = bulletOrigin.position;
-        obj.transform.rotation = bulletOrigin.rotation;
-
-        obj.SetActive(true);
-    }
-
 }

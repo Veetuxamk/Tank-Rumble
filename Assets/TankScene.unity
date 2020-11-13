@@ -120,6 +120,72 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &129404673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129404675}
+  - component: {fileID: 129404674}
+  - component: {fileID: 129404676}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &129404674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129404673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce4bd9c425bf81429db57fcb82dd56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &129404675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129404673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5832247, y: 3.9043384, z: 3.6686985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129404676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129404673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38818b2e11c5157448f1225752480c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  efxSource: {fileID: 0}
+  musicSource: {fileID: 0}
+  fireSource: {fileID: 0}
+  engineSource: {fileID: 0}
+  efxClip: {fileID: 8300000, guid: 7c9be9cfa3db25547871bcda6ac36803, type: 3}
+  musicClip: {fileID: 0}
+  fireClip: {fileID: 8300000, guid: f65e9c244abf51648ba893ed1a21fbf2, type: 3}
+  engineClip: {fileID: 8300000, guid: 3441eae707ffa9b42b927b4cb153d919, type: 3}
+  lowePitchRange: 0.95
+  highPitchRange: 1.05
 --- !u!1 &366620885
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,8 +195,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 366620886}
+  - component: {fileID: 366620887}
   m_Layer: 0
-  m_Name: ObjectPooler
+  m_Name: BulletPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,13 +210,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366620885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5966797, y: 3.524414, z: 0.45812988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 7916312350161320311}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &366620887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366620885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509d205dfbd13a04db2f408590456e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  ObjectToPool: {fileID: -927199367670048503, guid: 3cf123d0e1f051745a97bfcd3975a653,
+    type: 3}
+  ammountToPool: 5
 --- !u!1 &526677201
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adaf5f1553f705242b5fa409845e334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  turnrate: 1
+  tankSpeed: 2
 --- !u!4 &792881607
 Transform:
   m_ObjectHideFlags: 0
@@ -590,9 +677,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6595308328458505060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adaf5f1553f705242b5fa409845e334d, type: 3}
+  m_Script: {fileID: 11500000, guid: e53db52059d92304fafba4cbb87b1d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  turnrate: 1
+  tankSpeed: 2
 --- !u!4 &7916312350161320311
 Transform:
   m_ObjectHideFlags: 0
@@ -605,6 +696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 410597143848774223}
+  - {fileID: 366620886}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
