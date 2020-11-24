@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
+
         musicSource.clip = musicClip;
 
         efxSource.clip = efxClip;
@@ -39,6 +40,8 @@ public class AudioManager : MonoBehaviour
         engineSource.clip = engineClip;
 
         fireSource.clip = fireClip;
+
+
 
     }
     private void Awake()

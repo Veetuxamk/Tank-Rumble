@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     public int ammountToPool;
 
 
-
     void Awake()
     {
     SharedInstance = this;

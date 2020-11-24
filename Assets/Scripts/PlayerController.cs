@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 velocity;
@@ -10,14 +10,14 @@ using UnityEngine;
     private float tankSpeed = 5.0f;
 
     private Projectile gameManager;
-    private ObjectPooler BulletPooler;
+    
 
 
 
     void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
-        ObjectPooler = GetComponent<ObjectPooler>();
+       
     }
 
     // Update is called once per frame
@@ -31,4 +31,4 @@ using UnityEngine;
             gameObject.transform.forward = move;
         }
     }
-}*/
+}

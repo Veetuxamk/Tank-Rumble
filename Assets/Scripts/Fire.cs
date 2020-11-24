@@ -1,26 +1,50 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public Rigidbody projectile;
-    public float speed = 20;
+    public GameObject projectile;
+    public float bulletSpeed = 2000;
+    public float attackspeed = 0.5f;
+    public float cooldown;
+    public float yValue = 1f;
+    public float xValue = 0.2f;
 
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    
+
+    void fire()
+    {
+
+
+        GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+
+        
+    }
+    
 
     void Update()
     {
-       if (Input.GetKeyDown("Space"))
-       {
-            GameObject APR_Round = Projectile.SharedInstance.GetPooledObject();
-          /*  if (APR_Round != null)
+        if (Time.time >= cooldown)
+        {
+
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                APR_Round.transform.position = turret.transform.position;
-                APR_Round.transform.position = turret.transform.rotation;
-                APR_Round.SetActive(true);
-            }*/
-       }
+                fire();
+                audioSource.clip = audioClip;
+                audioSource.Play();
+            }
+        }
     }
+
+   
+
 }
 
  
