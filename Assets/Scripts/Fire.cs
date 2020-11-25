@@ -6,7 +6,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public GameObject projectile;
-    public float bulletSpeed = 2000;
+    public float bulletSpeed;
     public float attackspeed = 0.5f;
     public float cooldown;
     public float yValue = 1f;
@@ -14,7 +14,8 @@ public class Fire : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip audioClip;
-    
+
+    public GameObject InvisObj;
 
     void fire()
     {
@@ -41,6 +42,7 @@ public class Fire : MonoBehaviour
                 audioSource.Play();
             }
         }
+        float x = InvisObj.transform.rotation;
     }
 
    
