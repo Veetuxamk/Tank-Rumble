@@ -6,31 +6,33 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public GameObject projectile;
-    public float bulletSpeed;
+    public float bulletSpeed = 100;
     public float attackspeed = 0.5f;
-    public float cooldown;
+    public float cooldown = 10f;
     public float yValue = 1f;
     public float xValue = 0.2f;
 
     public AudioSource audioSource;
     public AudioClip audioClip;
 
-    public GameObject InvisObj;
-
     void fire()
     {
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        {
+          
+            bullet.SetActive(true);
+        }
+
+     
+
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10000);     
+        }
 
 
-        GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
-
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
-
-        
-    }
-    
-
-    void Update()
+        void Update()
     {
+        
         if (Time.time >= cooldown)
         {
 
@@ -41,12 +43,8 @@ public class Fire : MonoBehaviour
                 audioSource.clip = audioClip;
                 audioSource.Play();
             }
-        }
-        float x = InvisObj.transform.rotation;
+        }    
     }
-
-   
-
 }
 
  

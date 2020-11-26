@@ -4,44 +4,23 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource efxSource;
-
+   
     public AudioSource musicSource;
-
-    public AudioSource fireSource;
-
-    public AudioSource engineSource;
-
-
-
-
-    public AudioClip efxClip;
-
     public AudioClip musicClip;
 
-    public AudioClip fireClip;
-
-    public AudioClip engineClip;
-
+    public AudioSource SpecialEffect;
+    public AudioClip SpecialEffectClip;
 
     public static AudioManager instance = null;
     
-    public float lowePitchRange = .95f;
-
-    public float highPitchRange = 1.05f;
+  
 
     public void Start()
     {
 
         musicSource.clip = musicClip;
 
-        efxSource.clip = efxClip;
-
-        engineSource.clip = engineClip;
-
-        fireSource.clip = fireClip;
-
-
+        SpecialEffect.clip = SpecialEffectClip;
 
     }
     private void Awake()
@@ -57,9 +36,9 @@ public class AudioManager : MonoBehaviour
 
 public void PlaySingle(AudioClip clip)
     {
-        efxSource.clip = clip;
+        SpecialEffect.clip = clip;
 
-        efxSource.Play();
+        SpecialEffect.Play();
     }
 
 }
