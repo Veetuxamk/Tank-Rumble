@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,5 @@ public class ObjectPooler : MonoBehaviour
         //3   
         return null;
     }
-
 
 }

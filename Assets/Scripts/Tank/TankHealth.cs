@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TankHealth : MonoBehaviour
 {
-    public float m_StartingHealth = 100f;               // The amount of health each tank starts with.
+    public float m_StartingHealth = 100;               // The amount of health each tank starts with.
     public Slider m_Slider;                             // The slider to represent how much health the tank currently has.
     public Image m_FillImage;                           // The image component of the slider.
     public Color m_FullHealthColor = Color.green;       // The color the health bar will be when on full health.
@@ -13,21 +13,14 @@ public class TankHealth : MonoBehaviour
     
 
 
-    private AudioSource m_ExplosionAudio;               // The audio source to play when the tank explodes.
-    private ParticleSystem m_ExplosionParticles;        // The particle system the will play when the tank is destroyed.
+            
+    
     private float m_CurrentHealth;                      // How much health the tank currently has.
     private bool m_Dead;                                // Has the tank been reduced beyond zero health yet?
 
 
     private void Awake()
-    {
-       
-
-        // Get a reference to the audio source on the instantiated prefab.
-        m_ExplosionAudio = m_ExplosionParticles.GetComponent<AudioSource>();
-
-        // Disable the prefab so it can be activated when it's required.
-        m_ExplosionParticles.gameObject.SetActive(false);
+    {  
     }
 
 
@@ -72,16 +65,8 @@ public class TankHealth : MonoBehaviour
     {
         // Set the flag so that this function is only called once.
         m_Dead = true;
-
-        // Move the instantiated explosion prefab to the tank's position and turn it on.
-        m_ExplosionParticles.transform.position = transform.position;
-        m_ExplosionParticles.gameObject.SetActive(true);
-
-        // Play the particle system of the tank exploding.
-        m_ExplosionParticles.Play();
-
-        // Play the tank explosion sound effect.
-        m_ExplosionAudio.Play();
+       
+        
 
         // Turn the tank off.
         gameObject.SetActive(false);

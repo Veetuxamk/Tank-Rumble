@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class Fire2 : MonoBehaviour
 {
-    
+
     public float bulletSpeed = 100;
-   
-    
+
+
     public AudioSource audioSource;
     public AudioClip audioClip;
     public GameObject Player;
-
+    
     private void Start()
     {
-        Player = GameObject.Find("Tank");
+        Player = GameObject.Find("Tank2");
     }
     void fire()
     {
@@ -23,28 +23,25 @@ public class Fire : MonoBehaviour
         if (Bullet != null)
         {
             Bullet.transform.localPosition = Player.transform.TransformPoint(Vector3.forward * 8);
-            
-           
+
 
             Bullet.SetActive(true);
-            
+         
             Bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10000);
-        }      
+
+
+        }
     }
 
 
-        void Update()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                fire();
-                audioSource.clip = audioClip;
-                audioSource.Play();
-            }
-           
+            fire();
+            audioSource.clip = audioClip;
+            audioSource.Play();
         }
+
+    }
 }
-
- 
-       
-
